@@ -57,6 +57,14 @@
       --glowC: 0 0 18px rgba(32,243,255,.55), 0 0 42px rgba(32,243,255,.22);
       --glowM: 0 0 18px rgba(255,59,212,.45), 0 0 42px rgba(255,59,212,.18);
       --glowV: 0 0 18px rgba(139,92,255,.45), 0 0 42px rgba(139,92,255,.18);
+
+      /* IMÁGENES */
+      --logoUrl: url("https://iili.io/fQIKoS1.md.png");
+      /* Fondo overlay: no me pasaste el link de “la otra imagen”, así que por ahora queda con esta misma URL.
+         Reemplazá esta línea por tu URL real cuando quieras:
+         --bgOverlayUrl: url("https://TU-LINK-DE-FONDO.png");
+      */
+      --bgOverlayUrl: url("https://iili.io/fQIKoS1.md.png");
     }
 
     *{box-sizing:border-box}
@@ -65,13 +73,27 @@
       margin:0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--ink);
+
+      /* Fondo con imagen overlay full + capas de lectura encima (sin “romper” la imagen) */
       background:
         radial-gradient(900px 500px at 20% 10%, rgba(32,243,255,.18), transparent 60%),
         radial-gradient(900px 520px at 80% 22%, rgba(255,59,212,.12), transparent 60%),
         radial-gradient(900px 620px at 60% 92%, rgba(139,92,255,.14), transparent 62%),
-        linear-gradient(180deg, var(--bg0), var(--bg1) 40%, var(--bg2));
+        linear-gradient(180deg, rgba(7,6,19,.82), rgba(11,8,32,.78) 40%, rgba(18,10,43,.82)),
+        var(--bgOverlayUrl);
+
+      background-size: auto, auto, auto, auto, cover;
+      background-position: center, center, center, center, center;
+      background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+      background-attachment: scroll, scroll, scroll, scroll, fixed;
+
       min-height:100vh;
       overflow-x:hidden;
+    }
+
+    /* iOS/Android: fixed background a veces vibra → lo apagamos */
+    @media (max-width: 980px){
+      body{ background-attachment: scroll, scroll, scroll, scroll, scroll; }
     }
 
     /* subtle noise overlay */
@@ -126,15 +148,19 @@
       gap:12px;
       min-width: 220px;
     }
-    .logoMark{
-      width:40px; height:40px;
+
+    /* LOGO (imagen) */
+    .logoImg{
+      width:42px;
+      height:42px;
       border-radius: 14px;
-      background:
-        radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,.6), transparent 70%),
-        linear-gradient(135deg, rgba(32,243,255,.95), rgba(255,59,212,.92), rgba(139,92,255,.9));
+      object-fit: cover;
+      border:1px solid rgba(255,255,255,.20);
       box-shadow: var(--glowC), var(--glowM);
-      border:1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.06);
+      display:block;
     }
+
     .brandText{
       line-height:1.05;
     }
@@ -854,7 +880,7 @@
 
     /* Footer */
     footer{
-      padding: 34px 0 90px; /* leave space for WA button */
+      padding: 34px 0 110px; /* más aire para el botón WA */
       border-top: 1px solid rgba(255,255,255,.08);
       background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.18));
       position:relative;
@@ -898,7 +924,7 @@
       backdrop-filter: blur(var(--blur));
       -webkit-backdrop-filter: blur(var(--blur));
       box-shadow: var(--glowC), var(--glowM), 0 18px 48px rgba(0,0,0,.55);
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, bottom .18s ease;
     }
     .wa:hover{
       transform: translateY(-2px);
@@ -908,15 +934,24 @@
     .wa:focus-visible{outline:3px solid rgba(32,243,255,.55); outline-offset:2px;}
     .wa svg{width:26px; height:26px; filter: drop-shadow(0 0 10px rgba(32,243,255,.35));}
 
-    /* Reveal animation */
+    /* cuando el footer está visible, levantamos el WA */
+    .wa.raise{
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 92px);
+    }
+
+    /* REVEAL: desde los costados (izq/der) */
     .reveal{
       opacity:0;
-      transform: translateY(16px);
+      transform: translateX(-18px); /* por defecto: entra desde la izquierda */
       transition: opacity .6s ease, transform .6s ease;
+      will-change: transform, opacity;
+    }
+    .reveal.from-right{
+      transform: translateX(18px);
     }
     .reveal.in{
       opacity:1;
-      transform: translateY(0);
+      transform: translateX(0);
     }
 
     /* Responsive */
@@ -941,6 +976,7 @@
       .btn{width:100%;}
       .hero-ctas{gap:10px}
       .wa{right: 12px; width:54px; height:54px; border-radius: 18px;}
+      .wa.raise{bottom: calc(env(safe-area-inset-bottom, 0px) + 108px);}
     }
 
     /* Mobile menu panel */
@@ -988,7 +1024,7 @@
   <nav class="nav" aria-label="Navegación principal">
     <div class="wrap nav-inner">
       <a class="brand" href="#inicio" aria-label="Ir al inicio">
-        <div class="logoMark" aria-hidden="true"></div>
+        <img class="logoImg" src="https://iili.io/fQIKoS1.md.png" alt="CIBORG 347" />
         <div class="brandText">
           <div class="t1">CIBORG 347</div>
           <div class="t2">Landing Pages & Web Designs</div>
@@ -1503,7 +1539,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer id="siteFooter">
     <div class="wrap foot">
       <small>
         <b style="font-family:Orbitron,Inter; letter-spacing:.08em;">CIBORG 347</b><br/>
@@ -1516,7 +1552,6 @@
   </footer>
 
   <a class="wa" id="waFloat" href="#" aria-label="Abrir WhatsApp">
-    <!-- Simple WhatsApp-ish bubble (sin depender de assets externos) -->
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M20.2 11.9c0 4.6-3.8 8.3-8.4 8.3-1.5 0-2.9-.4-4.1-1l-2.6.8.9-2.5c-.7-1.2-1.1-2.6-1.1-4.1 0-4.6 3.8-8.3 8.4-8.3 4.6 0 8.4 3.7 8.4 8.3Z" stroke="rgba(233,236,255,.9)" stroke-width="1.4" opacity=".9"/>
       <path d="M9.4 8.7c.2-.4.4-.4.6-.4h.5c.2 0 .4 0 .5.3l.7 1.8c.1.3.1.5-.1.7l-.4.5c-.1.1-.2.3 0 .6.2.3.8 1.3 1.8 2.1 1.2 1 2.2 1.3 2.5 1.4.3.1.5 0 .6-.1l.8-.9c.2-.2.4-.2.7-.1l1.7.8c.3.1.4.4.3.7-.2.9-1.1 1.7-1.9 1.9-.6.1-1.4.3-3.2-.4-2.2-.9-3.6-3.1-3.7-3.2-.1-.2-1.5-2-1.5-3.7 0-1 .4-1.7.6-2Z"
@@ -1572,8 +1607,20 @@
       if(!panel.contains(e.target) && !hamb.contains(e.target)) setPanel(false);
     });
 
-    // ===== Reveal on scroll =====
+    // ===== Reveal on scroll (desde costados) =====
     const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Asignación automática: alterna izquierda/derecha para que no entre todo del mismo lado
+    function autoSide(){
+      const els = Array.from(document.querySelectorAll(".reveal"));
+      els.forEach((el, i)=>{
+        if(el.classList.contains("from-right")) return;
+        // si ya tiene from-right no tocamos; si no, alternamos
+        if(i % 2 === 1) el.classList.add("from-right");
+      });
+    }
+    autoSide();
+
     if(!reduceMotion){
       const io = new IntersectionObserver((entries)=>{
         for(const ent of entries){
@@ -1589,7 +1636,6 @@
     }
 
     // ===== Countdown (decorative) =====
-    // Creates a pseudo "next delivery/cupos" counter that loops.
     (function countdown(){
       const d = document.getElementById("d");
       const h = document.getElementById("h");
@@ -1660,13 +1706,11 @@
           if(s.y < -10) s.y = h+10;
           if(s.y > h+10) s.y = -10;
 
-          // glow-ish star
           ctx.beginPath();
           ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
           ctx.fillStyle = `rgba(233,236,255,${s.a})`;
           ctx.fill();
 
-          // tiny colored spark occasionally
           if(Math.random() < 0.01){
             ctx.beginPath();
             ctx.arc(s.x, s.y, s.r+0.8, 0, Math.PI*2);
@@ -1687,7 +1731,22 @@
       window.addEventListener("resize", resize, {passive:true});
       loop();
     })();
+
+    // ===== Levantar WA cuando el footer entra en vista =====
+    (function waAvoidFooter(){
+      const wa = document.getElementById("waFloat");
+      const footer = document.getElementById("siteFooter");
+      if(!wa || !footer) return;
+
+      const io = new IntersectionObserver((entries)=>{
+        for(const ent of entries){
+          if(ent.target === footer){
+            wa.classList.toggle("raise", ent.isIntersecting);
+          }
+        }
+      }, {threshold: 0.08});
+      io.observe(footer);
+    })();
   </script>
 </body>
 </html>
-
