@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>CIBORG 347 | Landing Pages & Web Designs</title>
+  <meta name="description" content="Una web linda no alcanza. CIBORG 347 crea landings y webs que convierten visitas en mensajes de WhatsApp. Primero te muestro una demo; si te cierra, avanzamos." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CIBORG 347 | Landing Pages & Web Designs" />
+  <meta property="og:description" content="Una web linda no alcanza. Necesitás un sistema que convierta. Pedí tu demo por WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://ciborg347.onrender.com/og-ciborg347.png" />
+  <meta property="og:url" content="https://ciborg347.onrender.com" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CIBORG 347 | Landing Pages & Web Designs" />
+  <meta name="twitter:description" content="Landings que convierten. Pedí tu demo por WhatsApp." />
+  <meta name="twitter:image" content="https://ciborg347.onrender.com/og-ciborg347.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* CIBORG palette (neon cyberpunk) */
+      --bg0:#070613;
+      --bg1:#0b0820;
+      --bg2:#120a2b;
+      --ink:#e9ecff;
+      --muted:#b9c0ff;
+
+      --cyan:#20f3ff;
+      --mag:#ff3bd4;
+      --vio:#8b5cff;
+      --lime:#6dff73;
+
+      --glass: rgba(255,255,255,.07);
+      --glass2: rgba(255,255,255,.05);
+      --stroke: rgba(255,255,255,.14);
+
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --shadow2: 0 14px 30px rgba(0,0,0,.45);
+
+      --radius-xl: 26px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+
+      --blur: 14px;
+      --max: 1180px;
+
+      --navH: 70px;
+
+      --glowC: 0 0 18px rgba(32,243,255,.55), 0 0 42px rgba(32,243,255,.22);
+      --glowM: 0 0 18px rgba(255,59,212,.45), 0 0 42px rgba(255,59,212,.18);
+      --glowV: 0 0 18px rgba(139,92,255,.45), 0 0 42px rgba(139,92,255,.18);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(32,243,255,.18), transparent 60%),
+        radial-gradient(900px 520px at 80% 22%, rgba(255,59,212,.12), transparent 60%),
+        radial-gradient(900px 620px at 60% 92%, rgba(139,92,255,.14), transparent 62%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 40%, var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    /* subtle noise overlay */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      opacity:.28;
+      z-index:0;
+    }
+
+    #stars{
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      z-index:0;
+      pointer-events:none;
+      opacity:.85;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .sr{position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
+
+    /* NAV */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      height:var(--navH);
+      display:flex;
+      align-items:center;
+      background: linear-gradient(180deg, rgba(7,6,19,.72), rgba(7,6,19,.30));
+      border-bottom:1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+    }
+    .nav-inner{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 220px;
+    }
+    .logoMark{
+      width:40px; height:40px;
+      border-radius: 14px;
+      background:
+        radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,.6), transparent 70%),
+        linear-gradient(135deg, rgba(32,243,255,.95), rgba(255,59,212,.92), rgba(139,92,255,.9));
+      box-shadow: var(--glowC), var(--glowM);
+      border:1px solid rgba(255,255,255,.25);
+    }
+    .brandText{
+      line-height:1.05;
+    }
+    .brandText .t1{
+      font-family: Orbitron, Inter, system-ui;
+      letter-spacing:.08em;
+      font-weight:800;
+      font-size: 15px;
+    }
+    .brandText .t2{
+      color:rgba(233,236,255,.75);
+      font-size: 12px;
+      margin-top:2px;
+    }
+
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+    .menu a{
+      color:rgba(233,236,255,.78);
+      font-size: 13px;
+      padding:10px 10px;
+      border-radius: 12px;
+      transition: .22s ease;
+    }
+    .menu a:hover{
+      color:var(--ink);
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset;
+    }
+
+    .nav-cta{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border-radius:999px;
+      padding:12px 16px;
+      font-weight:700;
+      font-size:14px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 12px 28px rgba(0,0,0,.35);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:focus-visible{outline:3px solid rgba(32,243,255,.55); outline-offset:2px;}
+    .btn:hover{transform: translateY(-1px);}
+    .btn.primary{
+      border-color: rgba(32,243,255,.35);
+      background:
+        linear-gradient(180deg, rgba(32,243,255,.16), rgba(255,255,255,.05));
+      box-shadow: var(--glowC), 0 16px 40px rgba(0,0,0,.45);
+    }
+    .btn.primary:hover{
+      border-color: rgba(32,243,255,.55);
+      box-shadow: 0 0 0 1px rgba(32,243,255,.25) inset, var(--glowC), 0 20px 50px rgba(0,0,0,.55);
+    }
+    .btn.ghost{
+      border-color: rgba(255,59,212,.28);
+      background: rgba(255,59,212,.06);
+      box-shadow: var(--glowM), 0 14px 34px rgba(0,0,0,.4);
+    }
+    .btn.ghost:hover{
+      border-color: rgba(255,59,212,.55);
+      box-shadow: 0 0 0 1px rgba(255,59,212,.25) inset, var(--glowM), 0 20px 50px rgba(0,0,0,.55);
+    }
+
+    .hamb{
+      display:none;
+      width:46px; height:42px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      cursor:pointer;
+    }
+    .hamb span{
+      display:block;
+      width:18px; height:2px;
+      background: rgba(233,236,255,.85);
+      margin: 6px auto;
+      border-radius:999px;
+      box-shadow: var(--glowC);
+    }
+
+    /* HERO */
+    header{
+      position:relative;
+      z-index:1;
+      padding: 44px 0 30px;
+    }
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 26px;
+      align-items: center;
+      padding-top: 18px;
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      box-shadow: var(--shadow2);
+      color: rgba(233,236,255,.86);
+      font-weight:700;
+      font-size: 12px;
+    }
+    .kdot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--cyan), var(--mag));
+      box-shadow: var(--glowC), var(--glowM);
+    }
+    h1{
+      margin: 16px 0 10px;
+      font-family: Orbitron, Inter, system-ui;
+      font-weight: 800;
+      letter-spacing: .06em;
+      line-height:1.05;
+      font-size: clamp(32px, 3.8vw, 54px);
+      text-transform: uppercase;
+    }
+    .sub{
+      color: rgba(233,236,255,.78);
+      font-size: clamp(15px, 1.35vw, 18px);
+      line-height: 1.6;
+      max-width: 55ch;
+      margin: 0 0 18px;
+    }
+
+    .hero-ctas{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 16px;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 18px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      color: rgba(233,236,255,.78);
+      font-size: 12px;
+      box-shadow: 0 12px 28px rgba(0,0,0,.35);
+    }
+    .chip i{
+      width:10px; height:10px; border-radius:999px; display:inline-block;
+      background: var(--cyan);
+      box-shadow: var(--glowC);
+    }
+    .chip.mag i{background: var(--mag); box-shadow: var(--glowM);}
+    .chip.vio i{background: var(--vio); box-shadow: var(--glowV);}
+    .chip.lime i{background: var(--lime); box-shadow: 0 0 18px rgba(109,255,115,.35);}
+
+    .heroRight{
+      position:relative;
+    }
+
+    .mock{
+      position:relative;
+      border-radius: var(--radius-xl);
+      border:1px solid rgba(255,255,255,.16);
+      background:
+        radial-gradient(420px 280px at 25% 20%, rgba(32,243,255,.18), transparent 60%),
+        radial-gradient(420px 320px at 80% 35%, rgba(255,59,212,.12), transparent 60%),
+        radial-gradient(520px 420px at 50% 92%, rgba(139,92,255,.12), transparent 62%),
+        rgba(255,255,255,.04);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      min-height: 380px;
+      padding: 18px;
+    }
+    .mock::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(32,243,255,.55), rgba(255,59,212,.45), rgba(139,92,255,.45));
+      filter: blur(18px);
+      opacity:.35;
+      z-index:0;
+    }
+    .mock::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), transparent 30%, rgba(0,0,0,.18));
+      z-index:0;
+      pointer-events:none;
+    }
+    .mockInner{
+      position:relative;
+      z-index:1;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
+    }
+
+    .floatStats{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .stat{
+      padding: 10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      box-shadow: 0 12px 26px rgba(0,0,0,.35);
+      font-size: 12px;
+      color: rgba(233,236,255,.82);
+      position:relative;
+      overflow:hidden;
+    }
+    .stat strong{
+      display:block;
+      font-family: Orbitron, Inter, system-ui;
+      letter-spacing:.06em;
+      font-size: 12px;
+      color: rgba(233,236,255,.92);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .stat .bar{
+      height:3px;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(32,243,255,.85), rgba(255,59,212,.75), rgba(139,92,255,.75));
+      opacity:.75;
+      margin-top:6px;
+      box-shadow: var(--glowC);
+    }
+
+    .countWrap{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
+    }
+    .countCard{
+      padding: 12px 10px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.2);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      text-align:center;
+      box-shadow: 0 12px 26px rgba(0,0,0,.35);
+    }
+    .countCard .n{
+      font-family: Orbitron, Inter, system-ui;
+      letter-spacing:.08em;
+      font-size: 18px;
+      font-weight:800;
+      text-shadow: var(--glowC);
+    }
+    .countCard .l{
+      font-size: 11px;
+      color: rgba(233,236,255,.72);
+      margin-top: 4px;
+    }
+
+    .heroStamp{
+      margin-top: 22px;
+      padding: 18px 16px;
+      border-radius: var(--radius-lg);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      box-shadow: var(--shadow2);
+    }
+    .heroStamp .big{
+      font-family: Orbitron, Inter, system-ui;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: clamp(16px, 1.65vw, 22px);
+      color: rgba(233,236,255,.9);
+      text-shadow: var(--glowM);
+      margin:0 0 6px;
+    }
+    .heroStamp .name{
+      font-family: Orbitron, Inter, system-ui;
+      letter-spacing:.14em;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: clamp(22px, 2.6vw, 34px);
+      margin:0;
+      color: rgba(233,236,255,.95);
+      text-shadow: var(--glowC), var(--glowV);
+    }
+
+    /* Sections */
+    main{position:relative; z-index:1}
+    section{padding: 58px 0}
+    .secHead{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:16px;
+      margin-bottom: 18px;
+    }
+    .secHead h2{
+      margin:0;
+      font-family: Orbitron, Inter, system-ui;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: clamp(18px, 2.1vw, 26px);
+    }
+    .secHead p{
+      margin:0;
+      color: rgba(233,236,255,.72);
+      max-width: 60ch;
+      line-height:1.6;
+      font-size: 14px;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .grid4{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:14px;
+    }
+
+    .card{
+      position:relative;
+      border-radius: var(--radius-xl);
+      border:1px solid rgba(255,255,255,.14);
+      background: var(--glass);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      min-height: 160px;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background: radial-gradient(420px 220px at 25% 10%, rgba(32,243,255,.10), transparent 60%),
+                  radial-gradient(420px 220px at 80% 30%, rgba(255,59,212,.08), transparent 60%);
+      opacity:.9;
+    }
+    .card:hover{
+      transform: translateY(-6px);
+      border-color: rgba(32,243,255,.26);
+      box-shadow: 0 0 0 1px rgba(32,243,255,.10) inset, var(--glowC), 0 22px 60px rgba(0,0,0,.55);
+    }
+    .cardInner{
+      position:relative;
+      padding: 18px 18px 16px;
+    }
+    .cardTitle{
+      margin:0 0 8px;
+      font-weight:800;
+      letter-spacing:.02em;
+      font-size: 16px;
+    }
+    .cardText{
+      margin:0;
+      color: rgba(233,236,255,.74);
+      line-height:1.6;
+      font-size: 14px;
+    }
+    .bullets{
+      margin:12px 0 0;
+      padding-left: 16px;
+      color: rgba(233,236,255,.72);
+      line-height:1.7;
+      font-size: 13px;
+    }
+    .bullets li{margin:6px 0}
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.16);
+      color: rgba(233,236,255,.78);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .tag b{
+      font-family: Orbitron, Inter, system-ui;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: rgba(233,236,255,.92);
+    }
+    .tag .spark{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--cyan), var(--mag));
+      box-shadow: var(--glowC), var(--glowM);
+    }
+
+    /* Timeline */
+    .timeline{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .step{
+      padding: 18px 18px 16px;
+      border-radius: var(--radius-xl);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .step:hover{
+      transform: translateY(-6px);
+      border-color: rgba(255,59,212,.26);
+      box-shadow: 0 0 0 1px rgba(255,59,212,.10) inset, var(--glowM), 0 22px 60px rgba(0,0,0,.55);
+    }
+    .step .num{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:38px; height:38px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.18);
+      box-shadow: var(--glowV);
+      font-family: Orbitron, Inter, system-ui;
+      font-weight: 800;
+      letter-spacing:.08em;
+      margin-bottom: 10px;
+    }
+    .step h3{
+      margin:0 0 6px;
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .step p{
+      margin:0;
+      color: rgba(233,236,255,.74);
+      line-height:1.6;
+      font-size: 14px;
+    }
+
+    /* Demos */
+    .demoCard{
+      min-height: 220px;
+    }
+    .thumb{
+      height: 120px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(220px 140px at 30% 30%, rgba(32,243,255,.20), transparent 60%),
+        radial-gradient(220px 140px at 70% 30%, rgba(255,59,212,.14), transparent 60%),
+        linear-gradient(135deg, rgba(139,92,255,.18), rgba(0,0,0,.12));
+      box-shadow: 0 16px 40px rgba(0,0,0,.38);
+      position:relative;
+      overflow:hidden;
+      margin-bottom: 12px;
+    }
+    .thumb::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.08), transparent 55%, rgba(0,0,0,.24));
+    }
+    .demoMeta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .price{
+      font-family: Orbitron, Inter, system-ui;
+      letter-spacing:.08em;
+      color: rgba(233,236,255,.88);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .like{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color: rgba(233,236,255,.70);
+      font-size: 12px;
+    }
+    .like .h{
+      filter: drop-shadow(0 0 10px rgba(255,59,212,.45));
+    }
+
+    /* Pricing */
+    .pricing .card{
+      min-height: 240px;
+    }
+    .planHead{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom: 8px;
+    }
+    .planName{
+      font-family: Orbitron, Inter, system-ui;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      font-weight:800;
+      margin:0;
+      font-size: 15px;
+    }
+    .badge{
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      color: rgba(233,236,255,.78);
+      box-shadow: 0 0 18px rgba(32,243,255,.22);
+      white-space:nowrap;
+    }
+    .planPrice{
+      margin: 6px 0 8px;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing:.02em;
+      text-shadow: var(--glowC);
+    }
+    .fine{
+      margin:0 0 12px;
+      color: rgba(233,236,255,.70);
+      line-height:1.6;
+      font-size: 13px;
+    }
+    .filterText{
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,59,212,.06);
+      color: rgba(233,236,255,.80);
+      box-shadow: var(--glowM);
+      line-height:1.55;
+      font-size: 13px;
+    }
+
+    /* FAQ */
+    details{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      box-shadow: 0 14px 34px rgba(0,0,0,.35);
+      padding: 14px 16px;
+    }
+    details + details{margin-top: 12px}
+    summary{
+      cursor:pointer;
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      font-weight: 800;
+    }
+    summary::-webkit-details-marker{display:none}
+    .chev{
+      width: 22px; height: 22px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 0 18px rgba(139,92,255,.18);
+      transition: transform .18s ease;
+    }
+    details[open] .chev{transform: rotate(180deg)}
+    details p{
+      margin: 10px 0 0;
+      color: rgba(233,236,255,.74);
+      line-height:1.6;
+      font-size: 14px;
+    }
+
+    /* Contact */
+    .contactBox{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .contactCard{
+      border-radius: var(--radius-xl);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      box-shadow: var(--shadow);
+      padding: 20px;
+      position:relative;
+      overflow:hidden;
+    }
+    .contactCard::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(520px 260px at 20% 20%, rgba(32,243,255,.14), transparent 65%),
+        radial-gradient(520px 260px at 80% 40%, rgba(255,59,212,.10), transparent 65%);
+      opacity:.95;
+      pointer-events:none;
+    }
+    .contactCard > *{position:relative}
+    .contactCard h3{
+      margin:0 0 6px;
+      font-family: Orbitron, Inter, system-ui;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      font-size: 18px;
+    }
+    .contactCard p{
+      margin:0 0 14px;
+      color: rgba(233,236,255,.74);
+      line-height:1.6;
+      font-size: 14px;
+      max-width: 60ch;
+    }
+    .contactActions{
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+      margin-top: 8px;
+    }
+
+    .mini{
+      border-radius: var(--radius-xl);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      box-shadow: var(--shadow2);
+      padding: 20px;
+    }
+    .mini .line{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .mini .line:first-child{border-top:none; padding-top:0}
+    .mini .k{
+      color: rgba(233,236,255,.72);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing:.08em;
+      font-family: Orbitron, Inter, system-ui;
+    }
+    .mini .v{
+      font-weight: 800;
+      color: rgba(233,236,255,.9);
+      font-size: 13px;
+      text-align:right;
+    }
+    .mini a.v{
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(32,243,255,.55);
+    }
+
+    /* Footer */
+    footer{
+      padding: 34px 0 90px; /* leave space for WA button */
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.18));
+      position:relative;
+      z-index:1;
+    }
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap: 16px;
+      flex-wrap:wrap;
+    }
+    .foot small{
+      color: rgba(233,236,255,.70);
+      line-height:1.6;
+    }
+    .credit a{
+      color: rgba(233,236,255,.88);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255,59,212,.55);
+    }
+
+    /* Floating WhatsApp */
+    .wa{
+      position:fixed;
+      right: 16px;
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
+      z-index:60;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.16);
+      background:
+        radial-gradient(16px 16px at 30% 30%, rgba(255,255,255,.45), transparent 70%),
+        linear-gradient(135deg, rgba(32,243,255,.20), rgba(255,59,212,.14), rgba(139,92,255,.14)),
+        rgba(0,0,0,.22);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      box-shadow: var(--glowC), var(--glowM), 0 18px 48px rgba(0,0,0,.55);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .wa:hover{
+      transform: translateY(-2px);
+      border-color: rgba(32,243,255,.42);
+      box-shadow: 0 0 0 1px rgba(32,243,255,.12) inset, var(--glowC), var(--glowM), 0 24px 60px rgba(0,0,0,.62);
+    }
+    .wa:focus-visible{outline:3px solid rgba(32,243,255,.55); outline-offset:2px;}
+    .wa svg{width:26px; height:26px; filter: drop-shadow(0 0 10px rgba(32,243,255,.35));}
+
+    /* Reveal animation */
+    .reveal{
+      opacity:0;
+      transform: translateY(16px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.in{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{grid-template-columns: 1fr; gap: 16px;}
+      .mock{min-height: 320px;}
+      .countWrap{grid-template-columns: repeat(4, 1fr);}
+      .contactBox{grid-template-columns: 1fr;}
+      .brand{min-width:auto;}
+    }
+    @media (max-width: 840px){
+      .menu{display:none;}
+      .hamb{display:block;}
+      .nav-cta .btn.ghost{display:none;}
+      .grid3{grid-template-columns: 1fr;}
+      .grid4{grid-template-columns: repeat(2, 1fr);}
+      .timeline{grid-template-columns: 1fr;}
+    }
+    @media (max-width: 520px){
+      .countWrap{grid-template-columns: repeat(2, 1fr);}
+      .grid4{grid-template-columns: 1fr;}
+      .btn{width:100%;}
+      .hero-ctas{gap:10px}
+      .wa{right: 12px; width:54px; height:54px; border-radius: 18px;}
+    }
+
+    /* Mobile menu panel */
+    .panel{
+      position:fixed;
+      top: calc(var(--navH) + 12px);
+      left: 12px;
+      right: 12px;
+      z-index:55;
+      border-radius: 22px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(10,8,22,.72);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      box-shadow: var(--shadow);
+      padding: 12px;
+      display:none;
+    }
+    .panel.open{display:block;}
+    .panel a{
+      display:block;
+      padding: 12px 12px;
+      border-radius: 16px;
+      color: rgba(233,236,255,.85);
+      border:1px solid transparent;
+      transition:.18s ease;
+    }
+    .panel a:hover{
+      background: rgba(255,255,255,.05);
+      border-color: rgba(255,255,255,.10);
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .reveal, .btn, .card, .step, .wa, .panel a{transition:none !important}
+      .reveal{opacity:1 !important; transform:none !important}
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+
+  <nav class="nav" aria-label="Navegación principal">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <div class="logoMark" aria-hidden="true"></div>
+        <div class="brandText">
+          <div class="t1">CIBORG 347</div>
+          <div class="t2">Landing Pages & Web Designs</div>
+        </div>
+      </a>
+
+      <div class="menu" role="navigation" aria-label="Secciones">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#demos">Demos</a>
+        <a href="#precios">Precios</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+
+      <div class="nav-cta">
+        <button class="hamb" id="hamb" aria-label="Abrir menú" aria-controls="panel" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="btn ghost" href="#demos" aria-label="Ver ejemplos de demos">Ver ejemplos</a>
+        <a class="btn primary" id="ctaTop" href="#" aria-label="Pedir tu demo por WhatsApp">
+          <span>Pedí tu demo</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="panel" id="panel" role="dialog" aria-label="Menú móvil">
+    <a href="#inicio" class="pLink">Inicio</a>
+    <a href="#servicios" class="pLink">Servicios</a>
+    <a href="#proceso" class="pLink">Proceso</a>
+    <a href="#demos" class="pLink">Demos</a>
+    <a href="#precios" class="pLink">Precios</a>
+    <a href="#faq" class="pLink">FAQ</a>
+    <a href="#contacto" class="pLink">Contacto</a>
+    <div style="padding: 10px 8px 6px;">
+      <a class="btn primary" id="ctaPanel" href="#" style="width:100%; text-align:center;">Pedí tu demo</a>
+    </div>
+  </div>
+
+  <header id="inicio">
+    <div class="wrap">
+      <div class="hero">
+        <div>
+          <div class="kicker reveal">
+            <span class="kdot" aria-hidden="true"></span>
+            <span>Pre-venta con sistema • Primero demo, después decisión</span>
+          </div>
+
+          <h1 class="reveal">UNA WEB LINDA NO ALCANZA</h1>
+          <p class="sub reveal">
+            Si querés clientes, necesitás una landing pensada para <b>convertir visitas en WhatsApp</b>.
+            Yo te muestro una demo (con tu estilo y tu rubro), la ajustamos y recién ahí avanzamos.
+          </p>
+
+          <div class="hero-ctas reveal">
+            <a class="btn primary" id="ctaHero" href="#">
+              Pedí tu demo
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="btn ghost" href="#demos">
+              Ver ejemplos
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <div class="chips reveal" aria-label="Beneficios principales">
+            <span class="chip"><i aria-hidden="true"></i><span>100% responsive</span></span>
+            <span class="chip mag"><i aria-hidden="true"></i><span>CTA a WhatsApp</span></span>
+            <span class="chip vio"><i aria-hidden="true"></i><span>Copy + diseño</span></span>
+            <span class="chip lime"><i aria-hidden="true"></i><span>Entrega rápida</span></span>
+          </div>
+
+          <div class="heroStamp reveal" aria-label="Firma de propuesta">
+            <p class="big">ESO ES DESARROLLO WEB BIEN HECHO</p>
+            <p class="name">CIBORG 347</p>
+          </div>
+        </div>
+
+        <div class="heroRight reveal">
+          <div class="mock" aria-label="Mock futurista">
+            <div class="mockInner">
+              <div class="floatStats">
+                <div class="stat">
+                  <strong>Optimizada</strong>
+                  Visitas → WhatsApp
+                  <div class="bar"></div>
+                </div>
+                <div class="stat">
+                  <strong>Proceso</strong>
+                  Demo primero
+                  <div class="bar"></div>
+                </div>
+                <div class="stat">
+                  <strong>Calidad</strong>
+                  Lead filtrado
+                  <div class="bar"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px;">
+                  <div class="tag"><span class="spark" aria-hidden="true"></span><b>Cupos de la semana</b></div>
+                  <div class="like" aria-label="Indicador de energía"><span class="h" aria-hidden="true">⚡</span> glow</div>
+                </div>
+                <div class="countWrap" aria-label="Contador">
+                  <div class="countCard"><div class="n" id="d">12</div><div class="l">días</div></div>
+                  <div class="countCard"><div class="n" id="h">03</div><div class="l">horas</div></div>
+                  <div class="countCard"><div class="n" id="m">11</div><div class="l">min</div></div>
+                  <div class="countCard"><div class="n" id="s">43</div><div class="l">seg</div></div>
+                </div>
+                <p style="margin:12px 0 0; color: rgba(233,236,255,.72); line-height:1.6; font-size: 13px;">
+                  Cerramos detalles rápido: objetivo, oferta, prueba social y un CTA claro.
+                  Después, te dejo listo para publicar.
+                </p>
+              </div>
+
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <span class="tag"><span class="spark" aria-hidden="true"></span><b>Micro-animaciones</b></span>
+                <span class="tag"><span class="spark" aria-hidden="true"></span><b>Glass + neon</b></span>
+                <span class="tag"><span class="spark" aria-hidden="true"></span><b>Sin vueltas</b></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="servicios">
+      <div class="wrap">
+        <div class="secHead reveal">
+          <div>
+            <h2>Servicios</h2>
+            <p>Diseño + estructura de conversión. Menos “me gusta”, más mensajes listos para cerrar.</p>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <article class="card reveal">
+            <div class="cardInner">
+              <div class="tag"><span class="spark" aria-hidden="true"></span><b>Landing que vende</b></div>
+              <h3 class="cardTitle">Página de venta / Captura</h3>
+              <p class="cardText">Ideal si querés un embudo simple con CTA fuerte a WhatsApp y copy claro.</p>
+              <ul class="bullets">
+                <li>Hero + oferta + prueba social</li>
+                <li>Secciones ancladas y scrolleo suave</li>
+                <li>CTA repetido en puntos clave</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="cardInner">
+              <div class="tag"><span class="spark" aria-hidden="true"></span><b>Web institucional</b></div>
+              <h3 class="cardTitle">Presencia profesional</h3>
+              <p class="cardText">Para negocios que necesitan confianza, claridad y un “contactame ahora” directo.</p>
+              <ul class="bullets">
+                <li>Servicios + FAQs + contacto</li>
+                <li>Diseño premium y responsive real</li>
+                <li>Enlaces a redes + mail interactivo</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="cardInner">
+              <div class="tag"><span class="spark" aria-hidden="true"></span><b>Optimización</b></div>
+              <h3 class="cardTitle">Copy + performance</h3>
+              <p class="cardText">Si ya tenés web, la llevamos a un estándar de conversión: mensajes, no visitas.</p>
+              <ul class="bullets">
+                <li>Mejoras de CTA / jerarquía / UX</li>
+                <li>Glass/neon con buena legibilidad</li>
+                <li>Señales de confianza y filtro</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proceso">
+      <div class="wrap">
+        <div class="secHead reveal">
+          <div>
+            <h2>Proceso</h2>
+            <p>Trabajo con demo primero para que decidas con algo concreto. Si te cierra, avanzamos.</p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="step reveal">
+            <div class="num">01</div>
+            <h3>Te muestro una demo</h3>
+            <p>Armo una vista inicial con tu rubro, tu estilo y el objetivo (WhatsApp / reservas / ventas).</p>
+          </div>
+          <div class="step reveal">
+            <div class="num">02</div>
+            <h3>Ajustamos y enfocamos</h3>
+            <p>Definimos un solo CTA fuerte, el mensaje de la oferta y el filtro para atraer mejor lead.</p>
+          </div>
+          <div class="step reveal">
+            <div class="num">03</div>
+            <h3>Dejo listo para publicar</h3>
+            <p>Responsive fino, velocidad, OG tags, botones, secciones y todo para que “venda sola”.</p>
+          </div>
+          <div class="step reveal">
+            <div class="num">04</div>
+            <h3>Revisión final</h3>
+            <p>Lo vemos juntos y se publica. Si querés, queda mantenimiento/edición como extra.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="demos">
+      <div class="wrap">
+        <div class="secHead reveal">
+          <div>
+            <h2>Demos</h2>
+            <p>Ejemplos estilo “marketplace” (cards glass + neon). Los links son placeholders para que los reemplaces.</p>
+          </div>
+        </div>
+
+        <div class="grid4">
+          <article class="card demoCard reveal">
+            <div class="cardInner">
+              <div class="thumb" aria-hidden="true"></div>
+              <h3 class="cardTitle">Demo • Restaurante</h3>
+              <p class="cardText">Menú, reservas, WhatsApp directo.</p>
+              <div class="demoMeta">
+                <span class="price">Conversión ↑</span>
+                <span class="like"><span class="h" aria-hidden="true">♥</span> 1.2k</span>
+              </div>
+              <div style="margin-top:12px;">
+                <a class="btn primary" href="#" aria-label="Ver demo restaurante">Ver demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demoCard reveal">
+            <div class="cardInner">
+              <div class="thumb" aria-hidden="true"></div>
+              <h3 class="cardTitle">Demo • Estética</h3>
+              <p class="cardText">Servicios, turnos y prueba social.</p>
+              <div class="demoMeta">
+                <span class="price">WhatsApp</span>
+                <span class="like"><span class="h" aria-hidden="true">♥</span> 980</span>
+              </div>
+              <div style="margin-top:12px;">
+                <a class="btn primary" href="#" aria-label="Ver demo estética">Ver demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demoCard reveal">
+            <div class="cardInner">
+              <div class="thumb" aria-hidden="true"></div>
+              <h3 class="cardTitle">Demo • Tienda</h3>
+              <p class="cardText">Catálogo simple + CTA compra.</p>
+              <div class="demoMeta">
+                <span class="price">Lead filtrado</span>
+                <span class="like"><span class="h" aria-hidden="true">♥</span> 1.6k</span>
+              </div>
+              <div style="margin-top:12px;">
+                <a class="btn primary" href="#" aria-label="Ver demo tienda">Ver demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demoCard reveal">
+            <div class="cardInner">
+              <div class="thumb" aria-hidden="true"></div>
+              <h3 class="cardTitle">Demo • Servicios</h3>
+              <p class="cardText">Oferta clara + FAQs y cierre.</p>
+              <div class="demoMeta">
+                <span class="price">Cierre</span>
+                <span class="like"><span class="h" aria-hidden="true">♥</span> 740</span>
+              </div>
+              <div style="margin-top:12px;">
+                <a class="btn primary" href="#" aria-label="Ver demo servicios">Ver demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demoCard reveal">
+            <div class="cardInner">
+              <div class="thumb" aria-hidden="true"></div>
+              <h3 class="cardTitle">Demo • Coach</h3>
+              <p class="cardText">Agenda, propuesta y CTA suave.</p>
+              <div class="demoMeta">
+                <span class="price">Agenda</span>
+                <span class="like"><span class="h" aria-hidden="true">♥</span> 1.1k</span>
+              </div>
+              <div style="margin-top:12px;">
+                <a class="btn primary" href="#" aria-label="Ver demo coach">Ver demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demoCard reveal">
+            <div class="cardInner">
+              <div class="thumb" aria-hidden="true"></div>
+              <h3 class="cardTitle">Demo • Construcción</h3>
+              <p class="cardText">Obras, garantías, contacto.</p>
+              <div class="demoMeta">
+                <span class="price">Confianza</span>
+                <span class="like"><span class="h" aria-hidden="true">♥</span> 520</span>
+              </div>
+              <div style="margin-top:12px;">
+                <a class="btn primary" href="#" aria-label="Ver demo construcción">Ver demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demoCard reveal">
+            <div class="cardInner">
+              <div class="thumb" aria-hidden="true"></div>
+              <h3 class="cardTitle">Demo • Eventos</h3>
+              <p class="cardText">Paquetes y reservas rápidas.</p>
+              <div class="demoMeta">
+                <span class="price">Reserva</span>
+                <span class="like"><span class="h" aria-hidden="true">♥</span> 870</span>
+              </div>
+              <div style="margin-top:12px;">
+                <a class="btn primary" href="#" aria-label="Ver demo eventos">Ver demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card demoCard reveal">
+            <div class="cardInner">
+              <div class="thumb" aria-hidden="true"></div>
+              <h3 class="cardTitle">Demo • Infoproducto</h3>
+              <p class="cardText">Venta digital con CTA fuerte.</p>
+              <div class="demoMeta">
+                <span class="price">Compra</span>
+                <span class="like"><span class="h" aria-hidden="true">♥</span> 2.0k</span>
+              </div>
+              <div style="margin-top:12px;">
+                <a class="btn primary" href="#" aria-label="Ver demo infoproducto">Ver demo</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="precios" class="pricing">
+      <div class="wrap">
+        <div class="secHead reveal">
+          <div>
+            <h2>Precios</h2>
+            <p>3 niveles para filtrar. Elegís por objetivo, no por “lo más barato”.</p>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <article class="card reveal">
+            <div class="cardInner">
+              <div class="planHead">
+                <h3 class="planName">Simple</h3>
+                <span class="badge">Arranque</span>
+              </div>
+              <div class="planPrice">Desde ARS</div>
+              <p class="fine">Landing directa a WhatsApp, ideal para validar rápido.</p>
+              <ul class="bullets">
+                <li>Secciones ancladas</li>
+                <li>CTA WhatsApp + mail</li>
+                <li>Diseño neon/glass</li>
+              </ul>
+              <div style="margin-top:12px;">
+                <a class="btn primary" href="#" data-wa="true" aria-label="Consultar plan simple por WhatsApp">Consultar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="cardInner">
+              <div class="planHead">
+                <h3 class="planName">Pro</h3>
+                <span class="badge">Conversión</span>
+              </div>
+              <div class="planPrice">Desde ARS</div>
+              <p class="fine">Copy mejorado + estructura de pre-venta y filtro de lead.</p>
+              <ul class="bullets">
+                <li>Sección prueba social</li>
+                <li>FAQs anti-objeciones</li>
+                <li>Optimización mobile</li>
+              </ul>
+              <div style="margin-top:12px;">
+                <a class="btn primary" href="#" data-wa="true" aria-label="Consultar plan pro por WhatsApp">Consultar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="cardInner">
+              <div class="planHead">
+                <h3 class="planName">Full</h3>
+                <span class="badge">Sistema</span>
+              </div>
+              <div class="planPrice">Desde ARS</div>
+              <p class="fine">Para vender “sin explicar”: oferta + embudo + claridad total.</p>
+              <ul class="bullets">
+                <li>Sección proceso completa</li>
+                <li>Assets / mockups / orden</li>
+                <li>Entrega lista para publicar</li>
+              </ul>
+              <div style="margin-top:12px;">
+                <a class="btn primary" href="#" data-wa="true" aria-label="Consultar plan full por WhatsApp">Consultar</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="filterText reveal">
+          <b>Filtro honesto:</b> si buscás “lo más barato”, quizás no soy para vos.
+          Mi foco es que la web se vea premium y <b>te traiga mensajes con intención de compra</b>.
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="secHead reveal">
+          <div>
+            <h2>FAQ</h2>
+            <p>Respuestas cortas a lo que frena decisiones.</p>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <details>
+            <summary>¿Qué es “demo primero”? <span class="chev" aria-hidden="true">⌄</span></summary>
+            <p>Te muestro una versión inicial con tu rubro y objetivo. Si te cierra, avanzamos con ajustes y publicación.</p>
+          </details>
+
+          <details>
+            <summary>¿Qué necesitás de mí para arrancar? <span class="chev" aria-hidden="true">⌄</span></summary>
+            <p>Rubro, qué vendés, 3–5 puntos fuertes, ejemplos que te gusten y el WhatsApp a usar. Con eso alcanza.</p>
+          </details>
+
+          <details>
+            <summary>¿Incluye dominio y hosting? <span class="chev" aria-hidden="true">⌄</span></summary>
+            <p>Puedo ayudarte a configurarlo. Si ya tenés dominio/hosting, lo conectamos. Si no, te recomiendo opciones.</p>
+          </details>
+
+          <details>
+            <summary>¿En cuánto tiempo está lista? <span class="chev" aria-hidden="true">⌄</span></summary>
+            <p>Depende del contenido, pero la idea es entrega rápida. Primero demo, después el cierre fino.</p>
+          </details>
+
+          <details>
+            <summary>¿Cómo se paga? <span class="chev" aria-hidden="true">⌄</span></summary>
+            <p>Lo definimos según el proyecto. Lo importante: decidís con una demo real, no con promesas.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="wrap">
+        <div class="secHead reveal">
+          <div>
+            <h2>Contacto</h2>
+            <p>Si querés una landing que convierta, mandame tu rubro y te muestro una demo.</p>
+          </div>
+        </div>
+
+        <div class="contactBox">
+          <div class="contactCard reveal">
+            <h3>Pedí tu demo</h3>
+            <p>
+              Mandame: <b>rubro</b>, <b>qué querés lograr</b> (ventas/reservas/consultas) y un <b>presupuesto estimado</b>.
+              Te respondo con una propuesta clara y el siguiente paso.
+            </p>
+            <div class="contactActions">
+              <a class="btn primary" id="ctaContact" href="#">
+                WhatsApp ahora <span aria-hidden="true">↗</span>
+              </a>
+              <a class="btn ghost" href="mailto:contacto@ciborg347.com" aria-label="Enviar mail a contacto@ciborg347.com">
+                Enviar mail <span aria-hidden="true">✉</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="mini reveal" aria-label="Datos rápidos">
+            <div class="line">
+              <div class="k">WhatsApp</div>
+              <a class="v" id="waText" href="#">+54 9 11 6449-9481</a>
+            </div>
+            <div class="line">
+              <div class="k">Proceso</div>
+              <div class="v">Demo → Ajustes → Publicación</div>
+            </div>
+            <div class="line">
+              <div class="k">Objetivo</div>
+              <div class="v">Mensajes con intención</div>
+            </div>
+            <div class="line">
+              <div class="k">Ubicación</div>
+              <div class="v">Argentina</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <small>
+        <b style="font-family:Orbitron,Inter; letter-spacing:.08em;">CIBORG 347</b><br/>
+        Landing Pages & Web Designs — estética neon/glass + estructura de conversión.
+      </small>
+      <small class="credit">
+        Creado y diseñado por <a href="https://ciborg347.onrender.com" target="_blank" rel="noopener">Ciborg 347</a>
+      </small>
+    </div>
+  </footer>
+
+  <a class="wa" id="waFloat" href="#" aria-label="Abrir WhatsApp">
+    <!-- Simple WhatsApp-ish bubble (sin depender de assets externos) -->
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20.2 11.9c0 4.6-3.8 8.3-8.4 8.3-1.5 0-2.9-.4-4.1-1l-2.6.8.9-2.5c-.7-1.2-1.1-2.6-1.1-4.1 0-4.6 3.8-8.3 8.4-8.3 4.6 0 8.4 3.7 8.4 8.3Z" stroke="rgba(233,236,255,.9)" stroke-width="1.4" opacity=".9"/>
+      <path d="M9.4 8.7c.2-.4.4-.4.6-.4h.5c.2 0 .4 0 .5.3l.7 1.8c.1.3.1.5-.1.7l-.4.5c-.1.1-.2.3 0 .6.2.3.8 1.3 1.8 2.1 1.2 1 2.2 1.3 2.5 1.4.3.1.5 0 .6-.1l.8-.9c.2-.2.4-.2.7-.1l1.7.8c.3.1.4.4.3.7-.2.9-1.1 1.7-1.9 1.9-.6.1-1.4.3-3.2-.4-2.2-.9-3.6-3.1-3.7-3.2-.1-.2-1.5-2-1.5-3.7 0-1 .4-1.7.6-2Z"
+            fill="rgba(233,236,255,.9)" opacity=".92"/>
+    </svg>
+  </a>
+
+  <script>
+    // ===== WhatsApp link builder =====
+    const WA_NUMBER = "5491164499481"; // +54 9 11 6449-9481
+    const WA_TEXT =
+      "Hola CIBORG 347! Quiero una landing que convierta. Mi rubro es: __. Presupuesto estimado: __. ¿Me mostrás una demo?";
+    const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_TEXT)}`;
+
+    function wireWA(){
+      const ids = ["ctaTop","ctaHero","ctaContact","waFloat","waText","ctaPanel"];
+      ids.forEach(id=>{
+        const el = document.getElementById(id);
+        if(el){
+          el.setAttribute("href", waLink);
+          el.setAttribute("target","_blank");
+          el.setAttribute("rel","noopener");
+        }
+      });
+
+      document.querySelectorAll('[data-wa="true"]').forEach(a=>{
+        a.setAttribute("href", waLink);
+        a.setAttribute("target","_blank");
+        a.setAttribute("rel","noopener");
+      });
+    }
+    wireWA();
+
+    // ===== Mobile menu =====
+    const hamb = document.getElementById("hamb");
+    const panel = document.getElementById("panel");
+    const pLinks = document.querySelectorAll(".pLink");
+
+    function setPanel(open){
+      panel.classList.toggle("open", open);
+      hamb.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    hamb?.addEventListener("click", ()=>{
+      setPanel(!panel.classList.contains("open"));
+    });
+    pLinks.forEach(l=>{
+      l.addEventListener("click", ()=> setPanel(false));
+    });
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape") setPanel(false);
+    });
+    document.addEventListener("click", (e)=>{
+      if(!panel.contains(e.target) && !hamb.contains(e.target)) setPanel(false);
+    });
+
+    // ===== Reveal on scroll =====
+    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(!reduceMotion){
+      const io = new IntersectionObserver((entries)=>{
+        for(const ent of entries){
+          if(ent.isIntersecting){
+            ent.target.classList.add("in");
+            io.unobserve(ent.target);
+          }
+        }
+      }, {threshold: 0.12});
+      document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
+    } else {
+      document.querySelectorAll(".reveal").forEach(el=> el.classList.add("in"));
+    }
+
+    // ===== Countdown (decorative) =====
+    // Creates a pseudo "next delivery/cupos" counter that loops.
+    (function countdown(){
+      const d = document.getElementById("d");
+      const h = document.getElementById("h");
+      const m = document.getElementById("m");
+      const s = document.getElementById("s");
+
+      let total = 12*24*60*60 + 3*60*60 + 11*60 + 43;
+      setInterval(()=>{
+        total--;
+        if(total <= 0) total = 12*24*60*60 + 3*60*60 + 11*60 + 43;
+
+        const dd = Math.floor(total / (24*60*60));
+        const hh = Math.floor((total % (24*60*60)) / 3600);
+        const mm = Math.floor((total % 3600) / 60);
+        const ss = total % 60;
+
+        if(d) d.textContent = String(dd).padStart(2,"0");
+        if(h) h.textContent = String(hh).padStart(2,"0");
+        if(m) m.textContent = String(mm).padStart(2,"0");
+        if(s) s.textContent = String(ss).padStart(2,"0");
+      }, 1000);
+    })();
+
+    // ===== Star particles canvas (lightweight) =====
+    (function stars(){
+      const canvas = document.getElementById("stars");
+      if(!canvas) return;
+
+      const ctx = canvas.getContext("2d", { alpha: true });
+      if(!ctx) return;
+
+      const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+      let w, h, stars;
+      const count = reduceMotion ? 0 : 54; // keep light
+      const speed = 0.25;
+
+      function resize(){
+        w = canvas.clientWidth = window.innerWidth;
+        h = canvas.clientHeight = window.innerHeight;
+        canvas.width = Math.floor(w * DPR);
+        canvas.height = Math.floor(h * DPR);
+        ctx.setTransform(DPR,0,0,DPR,0,0);
+
+        stars = Array.from({length: count}, ()=> ({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          r: Math.random()*1.6 + 0.4,
+          a: Math.random()*0.55 + 0.15,
+          vx: (Math.random()*0.6 + 0.2) * (Math.random()<0.5? -1: 1),
+          vy: (Math.random()*0.6 + 0.2) * (Math.random()<0.5? -1: 1),
+          tw: Math.random()*0.015 + 0.004
+        }));
+      }
+
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        if(!stars || stars.length === 0) return;
+
+        for(const s of stars){
+          s.x += s.vx * speed;
+          s.y += s.vy * speed;
+          s.a += (Math.random()-0.5) * s.tw;
+          s.a = Math.max(0.10, Math.min(0.70, s.a));
+
+          if(s.x < -10) s.x = w+10;
+          if(s.x > w+10) s.x = -10;
+          if(s.y < -10) s.y = h+10;
+          if(s.y > h+10) s.y = -10;
+
+          // glow-ish star
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+          ctx.fillStyle = `rgba(233,236,255,${s.a})`;
+          ctx.fill();
+
+          // tiny colored spark occasionally
+          if(Math.random() < 0.01){
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.r+0.8, 0, Math.PI*2);
+            ctx.fillStyle = Math.random() < 0.5
+              ? `rgba(32,243,255,${s.a*0.55})`
+              : `rgba(255,59,212,${s.a*0.45})`;
+            ctx.fill();
+          }
+        }
+      }
+
+      function loop(){
+        draw();
+        requestAnimationFrame(loop);
+      }
+
+      resize();
+      window.addEventListener("resize", resize, {passive:true});
+      loop();
+    })();
+  </script>
+</body>
+</html>
+
