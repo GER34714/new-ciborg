@@ -302,15 +302,20 @@
       padding-top: 18px;
     }
 
+    /* HERO IMAGE (reemplazado por la imagen que pediste) */
     .heroLogo{
-      width: clamp(160px, 22vw, 260px);
+      width: clamp(220px, 34vw, 520px);
       height: auto;
       display:block;
-      margin: 2px 0 10px;
+      margin: 2px 0 12px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow2), var(--glowC), var(--glowM);
+      background: rgba(255,255,255,.04);
       filter:
-        drop-shadow(0 0 18px rgba(32,243,255,.35))
-        drop-shadow(0 0 26px rgba(255,59,212,.25))
-        drop-shadow(0 0 34px rgba(139,92,255,.22));
+        drop-shadow(0 0 18px rgba(32,243,255,.25))
+        drop-shadow(0 0 26px rgba(255,59,212,.18))
+        drop-shadow(0 0 34px rgba(139,92,255,.16));
     }
 
     .kicker{
@@ -889,6 +894,7 @@
       .countWrap{grid-template-columns: repeat(4, 1fr);}
       .contactBox{grid-template-columns: 1fr;}
       .brand{min-width:auto;}
+      .heroLogo{width: min(100%, 520px);}
     }
     @media (max-width: 840px){
       .menu{display:none;}
@@ -977,8 +983,8 @@
             <span>Pre-venta con sistema • Primero demo, después decisión</span>
           </div>
 
-          <!-- LOGO HERO -->
-          <img class="heroLogo reveal" src="https://iili.io/fQIKoS1.md.png" alt="Logo CIBORG 347" />
+          <!-- HERO (imagen nueva) -->
+          <img class="heroLogo reveal" src="https://iili.io/fQcbMEx.png" alt="Hero CIBORG 347" />
 
           <h1 class="reveal">UNA WEB LINDA NO ALCANZA</h1>
           <p class="sub reveal">
